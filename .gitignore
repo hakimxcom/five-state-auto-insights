@@ -1,0 +1,16 @@
+# Local third-party data; retain upstream licensing / source attribution.
+data/raw/
+# Intermediate CSVs derived from the private local raw file.
+data/processed/
+# Reproducible figures and report exports (generated locally).
+outputs/
+# Python caches, environments and IDE files.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.idea/
