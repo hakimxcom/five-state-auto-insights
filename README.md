@@ -40,7 +40,7 @@ Each Python file starts with an explanation of its purpose, libraries, functions
 
 Python 3.10 or newer is recommended. Open a terminal in the repository folder.
 
-1. Create an environment and install the three main scientific packages:
+1. Create an environment and install the scientific packages:
 
    ```bash
    python -m venv .venv
@@ -49,7 +49,7 @@ Python 3.10 or newer is recommended. Open a terminal in the repository folder.
    python -m pip install -r requirements.txt
    ```
 
-2. Obtain the original **MasterGas.csv** and place it at `data/raw/MasterGas.csv`. See [the data instructions](data/README.md). **The raw third-party price dataset is intentionally not republished here.**
+2. Make the folder with `mkdir data/raw`, then obtain the original **MasterGas.csv** and place it at `data/raw/MasterGas.csv`. See [the data instructions](data/README.md). **The raw third-party price dataset is intentionally not republished here.**
 
 3. Run the two stages in order:
 
