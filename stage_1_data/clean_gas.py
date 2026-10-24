@@ -64,7 +64,12 @@ def clean_gas_frame(raw: pd.DataFrame) -> pd.DataFrame:
     if data["date"].isna().any():
         raise ValueError("Some gasoline dates could not be parsed.")
 
-    # 2. A dollar price is text; remove '$' and ',' before converting to float.
+    # 2. Filter the research period FIRST, so a bad price in an older row
+    #    that we never use cannot stop the pipeline. Day-level detail is kept.
+    data = data.loc[data["date"] >= pd.Timestamp("2025-01-01")].copy()
+    data["state"] = data["State"].map(STATES)
+
+    # 3. A dollar price is text; remove '$' and ',' before converting to float.
     prices = data["Regular"].astype("string").str.replace("$", "", regex=False)
     prices = prices.str.replace(",", "", regex=False)
     data["regular_usd_per_gallon"] = pd.to_numeric(prices, errors="coerce")
@@ -73,10 +78,6 @@ def clean_gas_frame(raw: pd.DataFrame) -> pd.DataFrame:
         or (~data["regular_usd_per_gallon"].between(0.01, 15.0)).any()
     ):
         raise ValueError("Some regular-gas prices are missing or implausible.")
-
-    # 3. Filter the research period; preserve the original day-level detail.
-    data = data.loc[data["date"] >= pd.Timestamp("2025-01-01")].copy()
-    data["state"] = data["State"].map(STATES)
 
     # 4. A day can appear only once per state. Never silently average repeats.
     if data.duplicated(["state", "date"]).any():

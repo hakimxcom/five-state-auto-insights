@@ -7,7 +7,7 @@
 
 **Research question:** How did regular gasoline prices and the share of **new** electric vehicle registrations move in California, Michigan, Florida, New York, and Illinois during the first half of 2026?
 
-This project is for a consumer-insights reader. It is **not** a forecast of a maker sales, a survey of buyer motives, or a causal estimate of gas prices on EV adoption.
+This project is for a consumer-insights reader. It is **not** a forecast of an automaker's sales, a survey of buyer motives, or a causal estimate of gas prices on EV adoption.
 
 ## One-minute overview
 

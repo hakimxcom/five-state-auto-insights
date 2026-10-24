@@ -53,15 +53,39 @@ class TestStageOne(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "price"):
             clean_gas_frame(raw)
 
+    def test_bad_price_before_research_period_is_ignored(self):
+        raw = self.gas_raw()
+        old_row = {"State": "Michigan", "Date": "2024-12-31", "Regular": "n/a"}
+        raw = pd.concat([raw, pd.DataFrame([old_row])], ignore_index=True)
+        clean = clean_gas_frame(raw)
+        self.assertEqual(len(clean), 10)
+        self.assertTrue((clean["date"] >= pd.Timestamp("2025-01-01")).all())
+
     def test_quarterly_mean_uses_observed_days_only(self):
-        gas = clean_gas_frame(self.gas_raw())
-        # Two daily prices, $3 and $5. Quarterly mean should be $4,
-        # not ($3+$5)/90. Only observed days enter the denominator.
-        q1 = gas.iloc[[0]].copy()
-        for state in STATE_NAMES.values():
-            sub = gas.loc[gas["state"] == state]
-            self.assertAlmostEqual(sub["regular_usd_per_gallon"].mean(), 4.0)
-        self.assertEqual(q1.iloc[0]["quarter"], "2026Q1")
+        # Two observed Q1 days per state, $3 and $5, plus one Q2 day.
+        # combine_quarterly() must report a $4.00 Q1 mean, i.e. (3+5)/2,
+        # not (3+5)/90. Missing calendar days stay out of the denominator.
+        gas = clean_gas_frame(pd.concat([
+            self.gas_raw(),
+            pd.DataFrame([
+                {"State": name, "Date": "2026-04-01", "Regular": "$4.500"}
+                for name in STATE_NAMES
+            ]),
+        ], ignore_index=True))
+        ev = pd.DataFrame([
+            {"state": code, "quarter": quarter, "ev_share_pct": 4.0,
+             "bev_share_pct": 4.0, "phev_share_pct": 0.0,
+             "fcev_share_pct": 0.0, "source_url": "https://example.org"}
+            for code in STATE_NAMES.values()
+            for quarter in ["2026Q1", "2026Q2"]
+        ])
+        joined = combine_quarterly(gas, ev)
+        q1 = joined.loc[joined["quarter"] == "2026Q1"]
+        self.assertTrue(
+            ((q1["gas_price_quarter_mean_usd"] - 4.0).abs() < 1e-9).all()
+        )
+        self.assertTrue((q1["days_observed"] == 2).all())
+        self.assertTrue((q1["days_missing"] == 88).all())
 
     def test_ev_reference_values_accepted(self):
         rows = []

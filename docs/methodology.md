@@ -6,7 +6,7 @@ The goal is to explain **what the software calculates and why**, without relying
 
 **Geography:** CA, MI, FL, NY, IL. California offers a leading EV market; Michigan is central to the auto industry; Florida, New York and Illinois add different regional profiles. This is a purposive comparison, **not** a statistically representative selection of all U.S. states.
 
-**Time:** 2025–2026 regular-grade daily state-average gasoline prices; 2026 Q1 and Q2 state-level EV shares of new registrations. The core combined dataset has 10 observations (5 states × 2 quarters).
+**Time:** regular-grade daily state-average gasoline prices from January 2025 onward (Stage I keeps 2025 as context; the analysis itself uses 2026 only); 2026 Q1 and Q2 state-level EV shares of new registrations. The core combined dataset has 10 observations (5 states × 2 quarters).
 
 **Question:** Did these two measures move over the same period, and how did the patterns differ by state?
 
@@ -78,7 +78,7 @@ rho = Pearson correlation between ranks(GasChangePct)
 - `matplotlib.pyplot.plot()`: five daily gasoline price lines for 2026. Displays observed values; absent dates remain absent.
 - `matplotlib.pyplot.bar()`: grouped Q1/Q2 reported EV market-share bars, five states.
 - `matplotlib.pyplot.scatter()` and `Axes.annotate()`: one labeled dot per state (gas percent change on x, EV percentage-point change on y).
-- `Axes.savefig()`: save readable 175-dpi PNG output. No fitted trendline or regression is implied.
+- `Figure.savefig()`: save readable 175-dpi PNG output. No fitted trendline or regression is implied.
 
 `numpy.arange()` supplies positions for the grouped bars. Other chart styling functions are cosmetic.
 
