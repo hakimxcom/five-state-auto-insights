@@ -1,0 +1,11 @@
+state,quarter,bev_share_pct,phev_share_pct,fcev_share_pct,ev_share_pct,source_url
+CA,2026Q1,15.42,2.06,0.02,17.51,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q1.pdf
+CA,2026Q2,18.22,2.97,0.02,21.21,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q2.pdf
+MI,2026Q1,3.20,0.55,0.00,3.75,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q1.pdf
+MI,2026Q2,4.04,0.90,0.00,4.93,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q2.pdf
+FL,2026Q1,6.25,0.85,0.00,7.10,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q1.pdf
+FL,2026Q2,8.07,1.21,0.00,9.28,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q2.pdf
+NY,2026Q1,3.72,1.12,0.00,4.84,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q1.pdf
+NY,2026Q2,4.76,1.40,0.00,6.16,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q2.pdf
+IL,2026Q1,3.92,0.90,0.00,4.82,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q1.pdf
+IL,2026Q2,5.53,1.10,0.00,6.63,https://www.autosinnovate.org/posts/papers-reports/Get%20Connected%20EV%20Quarterly%20Report%202026%20Q2.pdf
