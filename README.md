@@ -7,7 +7,7 @@
 
 **Research question:** How did regular gasoline prices and the share of **new** electric vehicle registrations move in California, Michigan, Florida, New York, and Illinois during the first half of 2026?
 
-This project is for a consumer-insights reader at an automaker: it goes from messy daily observations to a defensible state comparison, transparently. It is **not** a forecast of GM or Hyundai sales, a survey of buyer motives, or a causal estimate of gas prices on EV adoption.
+This project is for a consumer-insights reader. It is **not** a forecast of a maker sales, a survey of buyer motives, or a causal estimate of gas prices on EV adoption.
 
 ## One-minute overview
 
@@ -25,7 +25,7 @@ Both metrics increased across the five states. That is an observation, **not evi
 
 ### Two stages: follow the reasoning, one file at a time
 
-| Stage | File | Plain-English job |
+| Stage | File | job |
 |---|---|---|
 | **I — Data preparation** | [01 clean_gas.py](stage_1_data/clean_gas.py) | Import the source CSV, select states, convert dollar-text prices, check duplicate days. |
 | **I — Data preparation** | [02 prepare_ev.py](stage_1_data/prepare_ev.py) | Validate the ten EV observations manually transcribed from the industry reports. |
