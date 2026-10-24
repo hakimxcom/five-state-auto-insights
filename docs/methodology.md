@@ -1,6 +1,6 @@
-# Methodology — defend each step
+# Methodology 
 
-The goal is to explain **what the software calculates and why**, without relying on a black-box notebook.
+The goal is to explain **what the software calculates and why**.
 
 ## Research design
 
