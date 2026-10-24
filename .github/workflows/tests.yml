@@ -1,0 +1,22 @@
+name: Explainable pipeline tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository
+        uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install scientific packages
+        run: python -m pip install -r requirements.txt
+      - name: Test cleaning, joining and formulas (synthetic fixtures)
+        run: python -m unittest discover -s tests -v
+
+# No paid key or original raw gasoline dataset is needed to run the tests.
