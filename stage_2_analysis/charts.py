@@ -59,10 +59,13 @@ def chart_1_gas_trend(gas: pd.DataFrame) -> None:
     daily["date"] = pd.to_datetime(daily["date"])
     daily = daily.loc[daily["date"].dt.year == 2026]
     fig, ax = plt.subplots(figsize=(10, 5.4))
+    # reindex() inserts NaN at missing calendar dates. matplotlib then BREAKS
+    # the line at those dates instead of joining observations across a gap.
+    all_days = pd.date_range("2026-01-01", daily["date"].max(), freq="D")
     for state in STATES:
-        part = daily.loc[daily["state"] == state].sort_values("date")
-        ax.plot(part["date"], part["regular_usd_per_gallon"],
-                label=state, linewidth=1.6)
+        part = daily.loc[daily["state"] == state].set_index("date")
+        observed_with_gaps = part["regular_usd_per_gallon"].reindex(all_days)
+        ax.plot(all_days, observed_with_gaps, label=state, linewidth=1.6)
     style_axes(ax, "2026 daily regular gasoline prices", "USD per gallon")
     ax.set_xlabel("Observation date (gaps are not interpolated)")
     ax.legend(title="State", ncol=5, frameon=False)
