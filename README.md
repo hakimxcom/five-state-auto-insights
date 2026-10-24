@@ -17,6 +17,12 @@ This project is for a consumer-insights reader at an automaker: it goes from mes
 - **Unit of analysis:** state × quarter (10 rows). The daily price records are aggregated first to prevent accidentally counting the same EV share as dozens of separate observations.
 - **Honest caveat:** with just two quarters and five markets, trends can be described but a cause cannot be established.
 
+### First-half 2026: verified five-state snapshot
+
+![Side-by-side comparison of EV new-registration share and mean regular gasoline prices in Q1 and Q2 2026](docs/figures/market_snapshot_2026.svg)
+
+Both metrics increased across the five states. That is an observation, **not evidence that gasoline prices caused additional EV purchases**. See the [observed results and limitations](docs/observed_results.md) for precise Q1/Q2 values, data coverage and the exploratory comparison.
+
 ### Two stages: follow the reasoning, one file at a time
 
 | Stage | File | Plain-English job |
